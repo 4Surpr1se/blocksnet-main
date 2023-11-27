@@ -70,15 +70,15 @@ class InfrastructureCityModelGenerator(InfrastructureCityModelValidate):
         bounding_polygon = all_polygons_gdf.sort_values('area', ascending=False).iloc[0]['geometry']
         return bounding_polygon
 
-    def explore(self, nodev: GeoDataFrame, pzz: GeoDataFrame, *args, **kwargs):
-        self.generate_blocks()
-        self.cut_nodev(nodev)
-        self.add_pzz(pzz)
-        self.blocks.explore()
+    def explore(self, *args, **kwargs):
+        self.blocks.explore(*args, kwargs)
 
 
 # pzz = read_file('pzz_2019.geojson').to_crs(4326)
 # nodev = read_file('no_development_pzz.geojson')
 # ter = InfrastructureCityModelGenerator.get_bounding_polygon(pzz)
 # spb = InfrastructureCityModelGenerator(territory=ter, territory_name='Санкт-Петербург')
-# spb.explore(nodev, pzz)
+# spb.generate_blocks()
+# spb.cut_nodev(nodev)
+# spb.add_pzz(pzz)
+# spb.explore()
