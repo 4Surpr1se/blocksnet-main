@@ -7,6 +7,7 @@ import geopandas as gpd
 import numpy as np
 import momepy as mm
 import osmnx as ox
+from blocksnet.models import CityModel
 from dask.dataframe import Series
 from geopandas import GeoDataFrame
 from numpy import ndarray
@@ -513,7 +514,7 @@ def filter_small_blocks(blocks: GeoDataFrame & DataFrame, crs: pyproj.CRS=3857, 
     return blocks
 
 
-class CityModel:
+class InfrastructureCityModel(CityModel):
     # TODO: fix cluster assignment. Merge blocks with cluster polys than take the most area
     # TODO: write setters for class attributes
     # TODO: add saver
